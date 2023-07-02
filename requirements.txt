@@ -1,0 +1,9 @@
+numpy
+keras
+gensim
+scikit-learn
+matplotlib
+pandas
+seaborn
+plotly
+nbformat
