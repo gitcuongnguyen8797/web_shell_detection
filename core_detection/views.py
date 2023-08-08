@@ -21,13 +21,11 @@ def check_upload_file(request):
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
     model = RandomForest()
-    prediction_with_pca = model.predict_with_pca(extractor.extract_function_names())
     prediction_without_pca = model.predict_without_pca(extractor.extract_function_names())
     
     return JsonResponse(
         {
             "message": "Successfully",
-            'class_with_pca': ",".join(prediction_with_pca),
             'class_without_pca': ",".join(prediction_without_pca),
             "entropy": extractor.extract_entropy_file(),
             "longest_string": extractor.extract_longest_string(),
