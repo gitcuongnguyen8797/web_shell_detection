@@ -15,7 +15,7 @@ class ExtractFeatures:
             'session_start', 'header', 'try', 'catch', 'floor', 'round', 'max', 'min', 'session_destroy', 'css', 'pagination',
             'add', 'pop', 'shift', 'edit', 'int32', 'end', 'prev','next', 'for'
         ]
-        regex = re.compile(r"(?<=[\s|\;|\:|\=|\-|\+|\]|\[|\`|\.|\<])[a-zA-Z][a-zA-Z0-9\_ ]{1,255}(?=\()")
+        regex = re.compile(r"[_0-9A-Za-z][_0-9A-Za-z]{1,255}")
         with open(self.resource, 'r', encoding='ISO-8859-1') as file:
           results = [x.lower().strip() for x in regex.findall(file.read())]
           return Counter([result for result in results if result not in filter])
