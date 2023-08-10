@@ -6,8 +6,9 @@ import pathlib
 
 class Command(BaseCommand):
     help = 'Scanning Specific Folder to detect Webshells in PHP and ASP(X) languages'
-    model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
-    model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
+    model_php = RandomForest('dataset/dataset_2.csv')
+    model_asp = RandomForest('dataset/dataset_asp.csv')
+    malware = 0
     benigns = 0
 
     def is_folder(self, path):
@@ -26,10 +27,10 @@ class Command(BaseCommand):
                     filePath = path + '/' + file
                     ext = pathlib.Path(filePath).suffix
                     features = ExtractFeatures(filePath).extract_function_names()
-                    if (ext == 'js'):   
-                        prediction = self.model_js.predict_without_pca(features)
-                    else:
-                        prediction = self.model_ps.predict_without_pca(features)
+                    if (ext == 'asp' or ext == 'aspx'):   
+                        prediction = self.model_asp.predict_without_pca(features)
+                    else: 
+                        prediction = self.model_php.predict_without_pca(features)
                         
                     if (prediction[0] == 'malware'):
                         self.malware +=1
