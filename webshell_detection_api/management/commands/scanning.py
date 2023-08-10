@@ -6,7 +6,7 @@ import pathlib
 
 class Command(BaseCommand):
     help = 'Scanning Specific Folder to detect Webshells in PHP and ASP(X) languages'
-    model_php = RandomForest('dataset/dataset_2.csv')
+    model_php = RandomForest('dataset/c_dataset_20.csv')
     model_asp = RandomForest('dataset/dataset_asp.csv')
     malware = 0
     benigns = 0
