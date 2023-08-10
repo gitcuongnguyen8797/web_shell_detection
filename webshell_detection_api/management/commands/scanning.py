@@ -19,11 +19,11 @@ class Command(BaseCommand):
     def read_file(self, path):
         if (self.is_folder(path)):
             for file in os.listdir(path):
-                new_path = path+'/'+file
+                new_path = path+'\\'+file
                 if (self.is_folder(new_path)):
                     self.read_file(new_path)
                 else:
-                    filePath = path + '/' + file
+                    filePath = path + '\\' + file
                     ext = pathlib.Path(filePath).suffix
                     features = ExtractFeatures(filePath).extract_function_names()
                     if (ext == 'js'):   
