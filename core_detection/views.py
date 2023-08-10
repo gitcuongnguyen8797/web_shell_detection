@@ -7,6 +7,7 @@ from config import *
 from .machine_learning.classifiers.random_forest import RandomForest
 from django.shortcuts import render
 from django import forms
+import pathlib
 # Create your views here.
 
 class Form(forms.Form):
@@ -48,8 +49,14 @@ def check_file_upload(request):
     filename = fs.save(folder + file.name, file)
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
-    model = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
-    prediction_without_pca = model.predict_without_pca(extractor.extract_function_names())
+    model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
+    model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
+    ext = pathlib.Path(filename).suffix
+    if (ext == 'js'):
+        prediction_without_pca = model_js.predict_without_pca(extractor.extract_function_names())
+    else:
+        prediction_without_pca = model_ps.predict_without_pca(extractor.extract_function_names())
+
     return JsonResponse(
         {
             "message": "Successfully",
