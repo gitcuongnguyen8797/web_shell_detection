@@ -9,6 +9,7 @@ class Command(BaseCommand):
     model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
     model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
     benigns = 0
+    malware = 0
 
     def is_folder(self, path):
         if (os.path.isdir(path)):
