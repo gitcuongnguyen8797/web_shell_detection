@@ -8,6 +8,8 @@ from .machine_learning.classifiers.random_forest import RandomForest
 from django.shortcuts import render
 from django import forms
 import pathlib
+import uuid
+import json
 # Create your views here.
 
 class Form(forms.Form):
@@ -46,7 +48,8 @@ def check_file_upload(request):
     file = request.FILES['file']
     fs = FileSystemStorage()
     folder = "./storages/"
-    filename = fs.save(folder + file.name, file)
+    file_name = uuid.uuid4().hex
+    filename = fs.save(folder + file_name, file)
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
     model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
@@ -59,9 +62,8 @@ def check_file_upload(request):
 
     names = json.loads(json.dumps([{'name':key, 'value':value} for key,value in extractor.extract_function_names().items()], indent=2))
 
-
     return render(request, "result.html", {
         "message": "Successfully",
         'class': ",".join(prediction),
-        'function_names': extractor.extract_function_names()
+        'function_names': names[:10]
     })

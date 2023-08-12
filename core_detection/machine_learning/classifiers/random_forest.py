@@ -19,7 +19,7 @@ class RandomForest:
         self.y_train = Y
 
     def train_model_without_pca(self):
-        random_forest = RandomForestClassifier(max_depth=100, random_state=0)
+        random_forest = RandomForestClassifier(n_estimators=500, max_depth=7, random_state=0)
         random_forest.fit(self.x_train, self.y_train)
         return random_forest
     

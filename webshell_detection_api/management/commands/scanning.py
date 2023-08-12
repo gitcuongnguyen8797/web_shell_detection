@@ -3,6 +3,9 @@ from core_detection.machine_learning.classifiers.random_forest import RandomFore
 from core_detection.machine_learning.extract import *
 import os
 import pathlib
+import pandas as pd
+from datetime import datetime
+
 
 class Command(BaseCommand):
     help = 'Scanning Specific Folder to detect Webshells in PHP and ASP(X) languages'
@@ -10,6 +13,7 @@ class Command(BaseCommand):
     model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
     benigns = 0
     malware = 0
+    dataset = []
 
     def is_folder(self, path):
         if (os.path.isdir(path)):
@@ -33,8 +37,21 @@ class Command(BaseCommand):
                         prediction = self.model_ps.predict_without_pca(features)
                         
                     if (prediction[0] == 'malware'):
+                        now = datetime.now()
+                        today = now.today()
+                        date = today.strftime("%d/%m/%Y")
+                        current_time = now.strftime("%H:%M:%S")
+                        self.stdout.write(self.style.ERROR('[%s %s]: File %s là file độc hại' % (date, current_time,file)))
+                        self.dataset.append('[%s %s]: File %s là file độc hại\n' % (date, current_time,file))
                         self.malware +=1
+
                     else:
+                        now = datetime.now()
+                        today = now.today()
+                        date = today.strftime("%d/%m/%Y")
+                        current_time = now.strftime("%H:%M:%S")
+                        self.stdout.write(self.style.SUCCESS('[%s %s]: File %s là file sạch' % (date, current_time,file)))
+                        self.dataset.append('[%s %s]: File %s là file sạch\n' % (date, current_time,file))
                         self.benigns +=1
             
 
@@ -45,7 +62,9 @@ class Command(BaseCommand):
         folder = kwargs['folder']
         self.stdout.write(self.style.SUCCESS('Starting Scanning with Folder %s' % folder))
         self.read_file(folder)
-        self.stdout.write(self.style.ERROR('False Positive: %s' % self.malware))
-        self.stdout.write(self.style.SUCCESS('True Negative: %s' % self.benigns))
+        self.stdout.write(self.style.ERROR('Malware: %s' % self.malware))
+        self.stdout.write(self.style.SUCCESS('Benign: %s' % self.benigns))
         self.malware = 0 
         self.benigns = 0
+        with open('results.txt','w') as out:
+            out.writelines(self.dataset)

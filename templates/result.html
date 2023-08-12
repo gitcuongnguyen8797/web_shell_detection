@@ -26,14 +26,23 @@
         <div class="masthead">
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4">Kết quả kiểm tra file</h1>
+                    <h1 class="fst-italic lh-1 mb-4">Kết quả dò quét</h1>
                     <div class="row">
                         {% if class == 'malware' %}
-                        <h4>The file is: <span class="text-danger"><b>{{ class }}</b></span></h4>
+                        <h4>File này là: <span class="text-danger"><b>file độc hại</b></span></h4>
                         {% else %}
-                        <h4>The file is: <span class="text-success"><b>{{ class }}</b></span></h4>
+                        <h4>File này là: <span class="text-success"><b>file sạch</b></span></h4>
                         {% endif %}
-                       
+                        <table class="table">
+                            <tr class="text-light">
+                                <th>Hàm xuất hiện</th>
+                                <td>
+                                    {% for i in function_names %}
+                                        <p>{{ i.name }} : {{ i.value }} </p>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
