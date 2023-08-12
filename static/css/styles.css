@@ -44,6 +44,7 @@
   --bs-dark: #000000;
   --bs-primary-rgb: 42, 85, 85;
   --bs-secondary-rgb: 108, 117, 125;
+  --bs-third-rgb: 42, 52, 120;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
@@ -8036,7 +8037,8 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  /* color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important; */
+  color: #d22029;
 }
 
 .text-secondary {
@@ -8133,6 +8135,12 @@ textarea.form-control-lg {
 .bg-secondary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.btn-third {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-third-rgb), var(--bs-bg-opacity)) !important;
+  color: white;
 }
 
 .bg-success {
@@ -10840,9 +10848,27 @@ body:before {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #2a5555;
-  opacity: 0.7;
+  background-color: #000000;
+  opacity: 0.3;
   z-index: 1;
+}
+.logo {
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 15%;
+  height: auto;
+  z-index: 100;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: 0;
+  background-position: center;
+  background-size: contain;
 }
 
 video.bg-video {
@@ -10873,9 +10899,10 @@ video.bg-video {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 .masthead:before {
-  content: "";
+  /* content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -10883,7 +10910,7 @@ video.bg-video {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.85); */
 }
 .masthead .masthead-content {
   position: relative;
@@ -10929,7 +10956,7 @@ video.bg-video {
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 2rem;
-    padding-right: 9rem;
+    padding-right: 1rem;
   }
   .masthead .masthead-content h1, .masthead .masthead-content .h1 {
     font-size: 3.5rem;
