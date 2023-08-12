@@ -8,11 +8,11 @@
       "name": "Python: Django",
       "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}\\manage.py",
+      "program": "${workspaceFolder}/manage.py",
       "args": [
-        // "runserver"
-        "what_time_is_it",
-        "--folder=C:\\Users\\cuongwork\\Desktop\\webshell-detection-using-machine"
+        "runserver"
+        // "what_time_is_it",
+        // "--folder=C:\\Users\\cuongwork\\Desktop\\webshell-detection-using-machine"
       ],
       "django": true,
       "justMyCode": true

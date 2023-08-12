@@ -27,7 +27,7 @@ class ExtractFeatures:
         longest_string = ''
         with open(self.resource, 'r', encoding='ISO-8859-1') as file:
             lines = file.readlines()
-            longest_string = max(lines, key=len)
+            longest_string = max(lines, key=len, default='')
             return len(longest_string)
 
     def extract_by_word2vec(self):
