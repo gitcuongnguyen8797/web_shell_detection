@@ -40,7 +40,7 @@ def check_upload_file(request):
 
 def check_file(request):
     upload_form = Form()
-    return render(request, "result.html", { 'form': upload_form})
+    return render(request, "index.html", { 'form': upload_form})
 
 def check_file_upload(request):
     file = request.FILES['file']
@@ -56,6 +56,9 @@ def check_file_upload(request):
         prediction = model_js.predict_without_pca(extractor.extract_function_names())
     else:
         prediction = model_ps.predict_without_pca(extractor.extract_function_names())
+
+    names = json.loads(json.dumps([{'name':key, 'value':value} for key,value in extractor.extract_function_names().items()], indent=2))
+
 
     return render(request, "result.html", {
         "message": "Successfully",
