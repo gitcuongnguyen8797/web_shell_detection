@@ -64,6 +64,7 @@ def check_file_upload(request):
 
     return render(request, "result.html", {
         "message": "Successfully",
+        'file_name': file.name,
         'class': ",".join(prediction),
         'function_names': names[:10]
     })
