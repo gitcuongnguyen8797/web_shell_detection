@@ -39,7 +39,7 @@ def check_upload_file(request):
 
 def check_file(request):
     upload_form = Form()
-    return render(request, "index.html", { 'form': upload_form})
+    return render(request, "result.html", { 'form': upload_form})
 
 def check_file_upload(request):
     file = request.FILES['file']
@@ -50,12 +50,11 @@ def check_file_upload(request):
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
     model = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
     prediction_without_pca = model.predict_without_pca(extractor.extract_function_names())
-    return JsonResponse(
-        {
-            "message": "Successfully",
-            'class_without_pca': ",".join(prediction_without_pca),
-            "entropy": extractor.extract_entropy_file(),
-            "longest_string": extractor.extract_longest_string(),
-            'function_names': extractor.extract_function_names()
-        }
-    )
+
+    return render(request, "result.html", {
+        "message": "Successfully",
+        'class_without_pca': ",".join(prediction_without_pca),
+        "entropy": extractor.extract_entropy_file(),
+        "longest_string": extractor.extract_longest_string(),
+        'function_names': extractor.extract_function_names()
+    })
