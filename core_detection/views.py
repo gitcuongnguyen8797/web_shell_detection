@@ -59,7 +59,8 @@ def check_file_upload(request):
     file = request.FILES['file']
     fs = FileSystemStorage()
     folder = "./storages/"
-    filename = fs.save(folder + file.name, file)
+    file_name = uuid.uuid4().hex
+    filename = fs.save(folder + file_name, file)
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
     model_php = RandomForest('dataset/c_dataset_20.csv')
