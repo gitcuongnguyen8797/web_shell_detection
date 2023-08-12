@@ -66,5 +66,5 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Benign: %s' % self.benigns))
         self.malware = 0 
         self.benigns = 0
-        with open('results.txt','w') as out:
+        with open('results.txt','w', encoding='utf-8') as out:
             out.writelines(self.dataset)
