@@ -10,7 +10,7 @@ from datetime import datetime
 class Command(BaseCommand):
     help = 'Scanning Specific Folder to detect Webshells in PHP and ASP(X) languages'
     model_ps = RandomForest('./dataset/Qdataset_pwshell_loctu_moi_tfidf_400.csv')
-    model_js = RandomForest('./dataset/Qdataset_jscript_loctu_moi500_tfidf_400.csv')
+    model_js = RandomForest('./dataset/Qdataset_jscript_loctu_moi500_tfidf_50.csv')
     benigns = 0
     malware = 0
     dataset = []
@@ -24,14 +24,14 @@ class Command(BaseCommand):
     def read_file(self, path):
         if (self.is_folder(path)):
             for file in os.listdir(path):
-                new_path = path+'\\'+file
+                new_path = path+'/'+file
                 if (self.is_folder(new_path)):
                     self.read_file(new_path)
                 else:
-                    filePath = path + '\\' + file
+                    filePath = path + '/' + file
                     ext = pathlib.Path(filePath).suffix
                     features = ExtractFeatures(filePath).extract_function_names()
-                    if (ext == 'js'):   
+                    if (ext == '.js'):   
                         prediction = self.model_js.predict_without_pca(features)
                     else:
                         prediction = self.model_ps.predict_without_pca(features)

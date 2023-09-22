@@ -27,7 +27,7 @@ def check_upload_file(request):
     filename = fs.save(folder + file.name, file)
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
-    model = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
+    model = RandomForest('./dataset/Qdataset_pwshell_loctu_moi_tfidf_400.csv')
     prediction_without_pca = model.predict_without_pca(extractor.extract_function_names())
     
     return JsonResponse(
@@ -52,8 +52,8 @@ def check_file_upload(request):
     filename = fs.save(folder + file_name, file)
     uploaded_file_url = fs.url(filename)
     extractor = ExtractFeatures(ROOT_DIR + uploaded_file_url)
-    model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
-    model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
+    model_ps = RandomForest('./dataset/Qdataset_pwshell_loctu_moi_tfidf_400.csv')
+    model_js = RandomForest('./dataset/Qdataset_jscript_loctu_moi500_tfidf_50.csv')
     ext = pathlib.Path(filename).suffix
     if (ext == 'js'):
         prediction = model_js.predict_without_pca(extractor.extract_function_names())
