@@ -32,9 +32,9 @@ class Command(BaseCommand):
                     entropy = extractor.extract_entropy_file()
                     longest = extractor.extract_longest_string()
                     if (ext == 'asp' or ext == 'aspx'):   
-                        prediction = self.model_asp.predict_without_pca(features, entropy, longest)
+                        prediction = self.model_asp.predict_without_pca(features)
                     else: 
-                        prediction = self.model_php.predict_without_pca(features, entropy, longest)
+                        prediction = self.model_php.predict_without_pca(features)
                         
                     if (prediction[0] == 'malware'):
                         self.stdout.write(self.style.ERROR('Malwares: %s' % filePath))
