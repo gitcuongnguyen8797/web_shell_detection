@@ -1,0 +1,13 @@
+[15:24:01]: File .DS_Store là file sạc
+[15:24:01]: File 3.ps1 là file sạc
+[15:24:01]: File 2.ps1 là file sạc
+[15:24:01]: File 1.ps1 là file sạc
+[15:24:01]: File 5.ps1 là file sạc
+[15:24:01]: File 4.ps1 là file sạc
+[15:24:01]: File 6.ps1 là file sạc
+[15:24:01]: File 7.ps1 là file sạc
+[15:24:01]: File 9.ps1 là file sạc
+[15:24:01]: File 8.ps1 là file sạc
+[15:24:01]: File 12.ps1 là file sạc
+[15:24:01]: File 10.ps1 là file sạc
+[15:24:01]: File 11.ps1 là file sạc

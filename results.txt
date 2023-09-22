@@ -1,0 +1,13 @@
+[12/08/2023 15:26:54]: File .DS_Store là file sạch
+[12/08/2023 15:26:54]: File 3.ps1 là file sạch
+[12/08/2023 15:26:54]: File 2.ps1 là file sạch
+[12/08/2023 15:26:54]: File 1.ps1 là file sạch
+[12/08/2023 15:26:54]: File 5.ps1 là file sạch
+[12/08/2023 15:26:54]: File 4.ps1 là file sạch
+[12/08/2023 15:26:54]: File 6.ps1 là file sạch
+[12/08/2023 15:26:54]: File 7.ps1 là file sạch
+[12/08/2023 15:26:54]: File 9.ps1 là file sạch
+[12/08/2023 15:26:54]: File 8.ps1 là file sạch
+[12/08/2023 15:26:54]: File 12.ps1 là file sạch
+[12/08/2023 15:26:54]: File 10.ps1 là file sạch
+[12/08/2023 15:26:54]: File 11.ps1 là file sạch
