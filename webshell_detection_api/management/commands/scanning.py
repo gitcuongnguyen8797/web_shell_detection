@@ -9,8 +9,8 @@ from datetime import datetime
 
 class Command(BaseCommand):
     help = 'Scanning Specific Folder to detect Webshells in PHP and ASP(X) languages'
-    model_ps = RandomForest('./dataset/Q_dataset_ps_loctu_tfidf_200.csv')
-    model_js = RandomForest('./dataset/Qdataset_js_loctu_tfidf_720.csv')
+    model_ps = RandomForest('./dataset/Qdataset_pwshell_loctu_moi_tfidf_400.csv')
+    model_js = RandomForest('./dataset/Qdataset_jscript_loctu_moi500_tfidf_400.csv')
     benigns = 0
     malware = 0
     dataset = []
